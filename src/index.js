@@ -22,10 +22,12 @@ var start = function start(protocolPort, cb) {
     });
 
     sock.on('message', function(msg, rinfo) {
-        if (/^BACON_IS_HERE:(\d*)/.test(msg)) {
-            var port = msg.match('/^BACON_IS_HERE:(\d*)/')[1];
-            return (rinfo.address !== ip.address() || port !== protocolPort) ?
-            cb(rinfo.address, port) : void 0;
+        var regex = /^BACON_IS_HERE:(\d*)/;
+        msg = msg && msg.toString();
+        if (regex.test(msg)) {
+            var port = msg.match(regex)[1];
+            return (rinfo.address !== ip.address() && port !== protocolPort) ?
+                cb(rinfo.address, port) : void 0;
         } else {
             var bacon = new Buffer('BACON_IS_HERE:' + protocolPort);
             sock.send(bacon, 0, bacon.length,
