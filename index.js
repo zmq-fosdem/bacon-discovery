@@ -26,7 +26,7 @@ var start = function start(protocolPort, cb) {
     msg = msg && msg.toString();
     if (regex.test(msg)) {
       var port = msg.match(regex)[1];
-      return (rinfo.address !== ip.address() || port !== protocolPort) ?
+      return (rinfo.address !== ip.address() && port !== protocolPort) ?
         cb(rinfo.address, port) : void 0;
     } else {
       var bacon = new Buffer('BACON_IS_HERE:' + protocolPort);
