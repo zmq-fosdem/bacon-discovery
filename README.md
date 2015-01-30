@@ -3,7 +3,7 @@ bacon-discovery
 
 > Something something
 
-#= Badgers
+# Badgers
 
 [![NPM](https://nodei.co/npm/bacon-discovery.png?downloads=true&stars=true)](https://nodei.co/npm/bacon-discovery/)
 
