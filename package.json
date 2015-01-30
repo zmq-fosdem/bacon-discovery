@@ -1,0 +1,15 @@
+{
+  "name": "bacon-discovery",
+  "version": "1.5.1",
+  "description": "Discovery of peers based on UDP Bacon",
+  "main": "index.js",
+  "contributors": [
+    "Fábio Oliveira (https://github.com/foliveira)",
+    "Hassy Veldstra (https://github.com/hassy)",
+    "Thiago Dantas (https://github.com/tdantas)"
+  ],
+  "dependencies": {
+    "ip": "^0.3.2"
+  },
+  "license": "MIT"
+}
