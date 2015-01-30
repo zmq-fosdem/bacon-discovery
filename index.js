@@ -22,7 +22,7 @@ var start = function start(protocolPort, cb) {
   });
 
   sock.on('message', function(msg, rinfo) {
-    var regex = /^BACON_IS_HERE:(\d*)/;.
+    var regex = /^BACON_IS_HERE:(\d*)/;
     msg = msg && msg.toString();
     if (regex.test(msg)) {
       var port = msg.match(regex)[1];
