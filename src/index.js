@@ -6,6 +6,8 @@ var BROADCAST_PORT =  process.env.BROADCAST_PORT || 3000;
 
 var start = function start(protocolPort, cb) {
     var sock = dgram.createSocket('udp4');
+    var ownIp = ip.address();
+
     sock.bind(BROADCAST_PORT, function(err) {
         if (err) {
             console.error(err);
@@ -26,8 +28,12 @@ var start = function start(protocolPort, cb) {
         msg = msg && msg.toString();
         if (regex.test(msg)) {
             var port = msg.match(regex)[1];
-            return (rinfo.address !== ip.address() && port !== protocolPort) ?
-                cb(rinfo.address, port) : void 0;
+
+            if(rinfo.address !== ownIp ||
+              (rinfo.address === ownIp && port !== protocolPort))
+            {
+              cb(rinfo.address, port);
+            }
         } else {
             var bacon = new Buffer('BACON_IS_HERE:' + protocolPort);
             sock.send(bacon, 0, bacon.length,
