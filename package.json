@@ -2,14 +2,28 @@
   "name": "bacon-discovery",
   "version": "1.9.1",
   "description": "Discovery of peers based on UDP Bacon",
-  "main": "index.js",
+  "main": "src/index.js",
+  "scripts": {
+      "codestyle": "./node_modules/.bin/jscs src/*.js",
+      "lint": "./node_modules/.bin/jshint ."
+  },
+  "precommit": [
+    "codestyle",
+    "lint"
+  ],
   "contributors": [
     "Fábio Oliveira (https://github.com/foliveira)",
     "Hassy Veldstra (https://github.com/hassy)",
-    "Thiago Dantas (https://github.com/tdantas)"
+    "Thiago Dantas (https://github.com/tdantas)",
+    "David Dias (https://github.com/diasdavid)"
   ],
   "dependencies": {
     "ip": "^0.3.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jscs": "^1.10.0",
+    "jshint": "^2.6.0",
+    "precommit-hook": "^1.0.7"
+  }
 }
